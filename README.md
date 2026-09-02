@@ -42,6 +42,11 @@ python app/main.py
  
 Example question: How long do I have to return a product? 
  
+## OpenRouter Setup
+This project uses OpenRouter for LLM generation.
+Create a .env file in the project root and add your OpenRouter API key:rnrnOPENROUTER_API_KEY=YOUR_API_KEY_HERE
+The .env file is ignored by Git and should not be uploaded to GitHub.
+
 ## Course 
 This project was developed for the Modern Data Engineering for AI Systems course at SDAIA Academy. 
 SDAIA Academy: https://sdaia.gov.sa/en/Sectors/BuildingCapacity/academy/Pages/default.aspx
