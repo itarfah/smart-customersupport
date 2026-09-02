@@ -3,7 +3,8 @@
 ## Project Overview 
 This project is a Smart Customer Support system that combines Retrieval-Augmented Generation (RAG) with Data Quality Validation. 
 The system validates customer support documents, creates embeddings, stores them in ChromaDB, and retrieves relevant information based on the user's question.
- 
+ The retrieved context is sent to an LLM through OpenRouter to generate the final answer.
+
 ## Project Objectives 
 - Build a customer support RAG system. 
 - Apply data quality checks before indexing documents. 
@@ -13,7 +14,7 @@ The system validates customer support documents, creates embeddings, stores them
 - Retrieve relevant information with its source. 
  
 ## Architecture 
-Customer Support Documents -> Data Quality Validation -> Document Loading -> Text Chunking -> Embeddings -> ChromaDB -> Semantic Retrieval -> Answer + Source
+Customer Support Documents -> Data Quality Validation -> Document Loading -> Text Chunking -> Embeddings -> ChromaDB -> Semantic Retrieval -> LLM Generation -> Answer + Source
  
 ## Data Quality 
 The system checks file type, empty files, minimum content length, and duplicate files before indexing. 
@@ -26,6 +27,8 @@ Invalid documents are moved automatically to the data/quarantine folder.
 - all-MiniLM-L6-v2 embedding model 
 - PyPDF 
 - SHA-256 hashing for duplicate detection
+- OpenRouter
+- OpenAi python SDK
  
 ## How to Run 
 Install the required packages: 
