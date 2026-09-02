@@ -1,8 +1,10 @@
 from rag_pipeline import RAGPipeline
+from llm_client import LLMClient
 
 
 def main():
     rag = RAGPipeline()
+    llm = LLMClient()
     print("Preparing knowledge base...")
     rag.index_knowledge_base()
 
@@ -20,18 +22,37 @@ def main():
             print("Please enter a question.")
             continue
 
-        results = rag.retrieve(question, n_results=1)
-        documents = results.get("documents", [[]])[0]
-        metadatas = results.get("metadatas", [[]])[0]
+        results = rag.retrieve(question, n_results=3)
+
+        documents = results["documents"][0]
+        metadatas = results["metadatas"][0]
 
         if not documents:
             print("No answer found.")
             continue
 
+        context = "\n\n".join(documents)
+
+        answer = llm.generate_answer(
+            question=question,
+            context=context
+        )
+
+        sources = []
+
+        for metadata in metadatas:
+            source = metadata["source"]
+
+            if source not in sources:
+                sources.append(source)
+
         print("\nAnswer:")
-        print(documents[0])
-        print("\nSource:")
-        print(metadatas[0].get("source", "Unknown") if metadatas else "Unknown")
+        print(answer)
+
+        print("\nSources:")
+
+        for source in sources:
+            print("-", source)
 
 
 if __name__ == "__main__":
