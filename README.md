@@ -48,8 +48,8 @@ Create a .env file in the project root and add your OpenRouter API key:rnrnOPENR
 The .env file is ignored by Git and should not be uploaded to GitHub.
 
 ## Course 
-This project was developed for the Modern Data Engineering for AI Systems course at SDAIA Academy. 
-SDAIA Academy: https://sdaia.gov.sa/en/Sectors/BuildingCapacity/academy/Pages/default.aspx
+This project was made for "Modern Data Engineering for AI Systems" course provided by SDAIA Academy. 
+https://github.com/SDAIAAcademy
  
 ## Author 
 Tarfah Ahmad Alamer
